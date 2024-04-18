@@ -1,0 +1,15 @@
+package Page;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class S3pagefac {
+	WebDriver driver;
+	@FindBy(xpath="//a[@href=\"https://www.makemytrip.com/homestays/\"]")
+	WebElement homestays_villas;
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchCity inactiveWidget \"]")
+	WebElement from;
+
+}

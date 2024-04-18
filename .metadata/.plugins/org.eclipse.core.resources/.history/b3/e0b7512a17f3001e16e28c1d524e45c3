@@ -1,0 +1,10 @@
+package Page;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.FindBy;
+public class Oneway {
+WebDriver driver;
+
+	
+	@FindBy(xpath="//a[@class=\"headerIcons makeFlex hrtlCenter column active\"]")
+}

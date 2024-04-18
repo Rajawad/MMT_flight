@@ -1,0 +1,157 @@
+package StepDefinition;
+
+
+import java.awt.AWTException;
+import java.util.List;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+import DriverSetup.DriverClass;
+
+import Page.Pagefactoryflight;
+import Page.S2Pagefac;
+import Page.S3pagefac;
+import Page.S4pagefac;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Scenario1 {
+	
+	static WebDriver driver;
+	Pagefactoryflight obj;
+	S2Pagefac s2;
+	S3pagefac s3;
+	S4pagefac s4;
+	
+	
+	/* 
+	 * created by: 
+	 * Reviewed by:
+	 * 
+	 */
+	
+	@Given("User is on homepage")
+	public void user_is_on_homepage() {
+		driver=DriverClass.edgedriver();  
+		 obj=new Pagefactoryflight(driver);
+		// Alert al=driver.switchTo().alert();
+			//al.dismiss();
+		 s2=new S2Pagefac(driver);
+		 s3=new S3pagefac(driver);
+		 s4=new S4pagefac(driver);
+	
+	  
+	  
+	}
+	
+	
+	@When("User enter value in  {string} ,{string},{string} and {string}")
+	public void user_enter_value_in_and(String From, String to, String Departure, String TravellerClass) throws InterruptedException, AWTException {
+		obj.Details(From, to);  
+	}
+	
+
+	
+	
+
+	@And("click on search")
+	public void click_on_search() {
+	 	 obj.SearchFlight();
+	}
+
+
+	
+	
+
+	@Then("flights from source to destination")
+	public void flights_from_source_to_destination() {
+	  
+	}
+/*----------------------------------------------------------------------------------*/
+	/* 
+	 * created by: 
+	 * Reviewed by:
+	 * Supervised by:
+	 * 
+....................................................................................................	 */
+//
+	@When("User enter value in  {string} and {string}")
+	public void user_enter_value_in_and(String string, String string2) throws InterruptedException, AWTException {
+	
+		obj.Details1(string, string2);
+	}
+	
+	
+	@Then("{string} message should be displayed")
+	public void message_should_be_displayed(String string) {
+	    
+		obj.errormsg();	
+	}
+
+	
+	//...................................................................................................................
+
+	@When("User enter value in  {string},{string} ,{string}, {string},{string}")
+	public void user_enter_value_in(String string, String string2, String string3, String string4, String string5) throws InterruptedException, AWTException {
+	   obj.Details3("indore");
+	   obj.Search_stay3();
+
+	    
+	}
+	
+	
+	@Then("search result should appear")
+	public void search_result_should_appear() throws InterruptedException {
+		 
+		
+		obj.result3();
+        
+	}
+
+	
+//..........................................................................................................................
+	
+	
+	@When("User enter value in  from,to,return,guest,price")
+	public void user_enter_value_in_from_to_return_guest_price() throws InterruptedException, AWTException {
+	  
+	    obj.Details4();
+	}
+
+	@And("by clicking on search result appear")
+	public void by_clicking_on_search_result_appear() throws InterruptedException, AWTException {
+	
+	 obj.Search_stay4();
+	}
+ 
+
+	@And("in searchbar user enters the near by location")
+	public void in_searchbar_user_enters_the_near_by_location() throws InterruptedException, AWTException {
+	    
+	    obj.search_nearby_loc();
+	}
+	
+	@Then("result should appear")
+	public void result() throws InterruptedException {
+	
+	 obj.resultshould_appear();
+  }
+//........................................................................................................................
+
+	@When("User enter the invalid input in searchbar")
+	public void user_enter_the_invalid_input_in_searchbar() {
+	    
+	}
+
+	@Then("error message should be displayed")
+	public void error_message_should_be_displayed() {
+	   
+	}
+
+
+}

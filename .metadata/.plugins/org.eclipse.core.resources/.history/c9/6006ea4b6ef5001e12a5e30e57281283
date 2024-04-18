@@ -1,0 +1,72 @@
+package StepDefinition;
+
+
+import java.awt.AWTException;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+
+import DriverSetup.DriverClass;
+import Page.Oneway;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Scenario1 {
+	
+	static WebDriver driver;
+	Oneway obj;
+	
+	/* 
+	 * created by: 
+	 * Reviewed by:
+	 * 
+	 */
+	
+	@Given("User is on homepage")
+	public void user_is_on_homepage() {
+		driver=DriverClass.chromedriver();  
+		 obj=new Oneway(driver);
+//		 Alert al=driver.switchTo().alert();
+//			al.dismiss();
+		 
+		 
+	
+	  
+	  
+	}
+	
+
+	
+	
+	@When("User enter value in  To ,from,Departure and TravellerClass")
+	public void user_enter_value_in_to_from_departure_and_traveller_class() throws InterruptedException, AWTException {
+		obj.Details("indore", "mumbai");
+
+	}
+	
+
+	@And("click on search")
+	public void click_on_search() {
+	 	 obj.SearchFlight();
+	}
+
+
+	
+	
+
+	@Then("flights from source to destination")
+	public void flights_from_source_to_destination() {
+	  
+	}
+/*----------------------------------------------------------------------------------*/
+	/* 
+	 * created by: 
+	 * Reviewed by:
+	 * 
+	 */
+
+
+
+}

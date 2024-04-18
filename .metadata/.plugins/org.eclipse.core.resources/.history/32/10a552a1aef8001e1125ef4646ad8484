@@ -1,0 +1,94 @@
+package Page;
+
+import java.awt.AWTException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class S3pagefac {
+	WebDriver driver;
+	@FindBy(xpath="//a[@href=\"https://www.makemytrip.com/homestays/\"]")
+	WebElement homestays_villas;
+	
+	@FindBy(xpath="//div[@class=\"hsw_inputBox selectHtlCity\"]")
+	WebElement from;
+
+	@FindBy(xpath="//input[@class=\"react-autosuggest__input react-autosuggest__input--open\"]")
+	WebElement frominput;
+	
+	
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_300\"]/label/input[@id=\"checkin\"]")
+	WebElement checkin;
+	
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_300\"]/label/input[@data-cy=\"checkin\"]")
+	WebElement checkout;
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_302\"]/label/input[@id=\"guest\"]")
+	WebElement guest;
+	
+	
+	@FindBy (xpath="//*[@data-cy=\"GuestSelect$$_323\"]")
+     WebElement guestcount;
+	
+	@FindBy(xpath="//input[@data-cy=\"HomeStaysSearchWidget_047\"]")
+	WebElement price;
+	
+	@FindBy(xpath="//*[@data-cy=\"PricePerNight_325\"]")
+	WebElement priceset;
+	
+	@FindBy(xpath="//button[@id=\"hsw_search_button\"]")
+	WebElement search;
+	
+	public S3pagefac(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver,this);
+	}
+	public void Details(String from1) throws InterruptedException, AWTException {
+		
+		
+		homestays_villas.click();
+		
+		from.click();
+		Thread.sleep(3000);
+		frominput.sendKeys("indore");
+		checkin.click();
+		
+		
+		
+	  	JavascriptExecutor js = (JavascriptExecutor)driver;
+    	js.executeScript("window.scrollBy(0,200)");
+    	Thread.sleep(1000);
+    	
+    	
+       	WebElement selectDate = driver.findElement(By.xpath("//div[@class=\"DayPicker-Day DayPicker-Day--selected\" and text()=\"26\"]"));
+       	selectDate.click();
+       	
+    	Thread.sleep(1000);		
+
+       	
+       	WebElement checkout= driver.findElement(By.xpath("//div[@class=\"DayPicker-Day\" and text()=\"3\"]"));
+       	checkout.click();
+       	
+       	Thread.sleep(1000);		
+				
+     guest.click();
+     guestcount.click();
+     
+     price.click();
+     priceset.click();
+     
+    
+
+}
+	
+	 public void Search_stay() {
+		 search.click();
+	 	}	
+			
+}

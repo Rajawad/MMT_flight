@@ -1,0 +1,156 @@
+package Page;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.openqa.selenium.WebDriver;
+
+
+public class Pagefactoryflight {
+
+WebDriver driver;
+	
+//	@FindBy(id="webklipper-publisher-widget-container-notification-frame")
+//	WebElement popup;
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchCity inactiveWidget \"]")
+	WebElement from;
+	
+	@FindBy(xpath="//div[@class=\"autoSuggestPlugin hsw_autocomplePopup\"]/child::div/input")
+	WebElement fromInput;
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchToCity inactiveWidget \"]")
+	WebElement to;
+	
+	@FindBy(xpath="//div[@class=\"autoSuggestPlugin hsw_autocomplePopup makeFlex column spaceBetween\"]/child::div/input")
+	WebElement toInput;
+	
+	@FindBy(id="//div[@aria-label=\"Tue Apr 23 2024\"] ")
+	WebElement dateValue;
+	
+	@FindBy(xpath="//input[@class=\"fsw_inputField font30 latoBlack\"]")
+	WebElement traveller;
+	
+	@FindBy(xpath="//li[@data-cy=\"adults-2\"]")
+	WebElement travellervalue;
+	
+	@FindBy(id="search_button")
+	WebElement Search;
+	
+	public Pagefactoryflight(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver,this);
+	}
+	
+	public void ClickFlights() throws InterruptedException {
+	 
+		
+		
+		//WebElement popup= driver.findElement(By.id("webklipper-publisher-widget-container-notification-container"));
+		Alert al=driver.switchTo().alert();
+		al.dismiss();
+		//driver.switchTo().frame(popup);
+		//driver.findElement(By.id("webklipper-publisher-widget-container-notification-close-div")).click();
+		
+		
+		//popup.click();
+		//@FindBy(id="webklipper-publisher-widget-container-notification-close-div")
+		
+	
+		
+		
+	}
+	public void Details() throws InterruptedException, AWTException {
+		from.click();
+		Thread.sleep(3000);
+		fromInput.sendKeys("Indore");
+		Thread.sleep(3000);
+		   Robot r=new Robot();
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(3000);
+//	       r.keyRelease(KeyEvent.VK_DOWN);
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+//	       r.keyRelease(KeyEvent.VK_ENTER);
+		to.click();
+		Thread.sleep(3000);
+		toInput.sendKeys("Bengalore");
+		
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(5000);
+//	       r.keyRelease(KeyEvent.VK_DOWN);
+	      // Thread.sleep(3000);
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+	      // r.keyRelease(KeyEvent.VK_ENTER);
+		dateValue.click();
+		
+		
+		
+		String y="2024";
+		String m="April";
+		String d="26";
+		while(true)
+		{String monthYear=driver.findElement(By.xpath("//div[text()=\"April 2024\"]"))
+					.getText();   // march2024   april2024
+			String arr[]=monthYear.split(" ");
+			String month=arr[0];	// march
+			String year=arr[1];		// 2024
+			if(month.equalsIgnoreCase(m) && year.equalsIgnoreCase(y))
+				break;
+			else
+			driver.findElement(By.xpath("//span[@class=\"DayPicker-NavButton DayPicker-NavButton--next\"]"))
+			.click();			// arrow button (go to next month)		
+		}
+
+		
+		// date
+				driver.findElement(By.xpath("//div[@aria-label=\"Fri Apr 26 2024\"]"))
+				.click();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		traveller.click();
+		travellervalue.click();
+	}
+	public void SearchFlight() {
+		Search.click();
+	}
+}

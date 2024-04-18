@@ -1,0 +1,35 @@
+Feature: To test the flight functionality to book flight ticket
+
+  Background: 
+    Given User is on homepage
+
+  @Scenario1
+  Scenario Outline: To validate one way option with search button
+    When User enter value in  "<From>" ,"<to>","<Departure>" and "<TravellerClass>"
+    And click on search
+    Then flights from source to destination
+
+    Examples: 
+      | From   | to        | Departure | TravellerClass |
+      | Indore | Bengalore |        24 |              3 |
+
+  @Scenario2
+  Scenario Outline: To validate error message appear if we enter same value in from and to
+    When User enter value in  "<From>" and "<to>"
+    Then "<error>" message should be displayed
+
+    Examples: 
+      | From   | to        |
+      | Indore |Indore  |
+	
+	
+#	 @Scenario3
+#	  Scenario Outline: To validate one way option with search button
+    #When User enter value in  "<From>" ,"<to>","<Departure>" ,"<return>", "<TravellerClass>"
+    #And click on search
+    #Then flights of round trip should
+#
+    #Examples: 
+      #| From   | to        | Departure |return| TravellerClass |
+      #| Indore | Bengalore |        24 April 2024|     1 March2024  |       3 |
+#	 

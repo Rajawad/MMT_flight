@@ -1,0 +1,391 @@
+package Page;
+import java.awt.AWTException;
+import java.util.List;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
+
+import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.openqa.selenium.WebDriver;
+
+
+public class Pagefactoryflight {
+
+WebDriver driver;
+	
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchCity inactiveWidget \"]")
+	WebElement from;
+	
+	@FindBy(xpath="//div[@class=\"autoSuggestPlugin hsw_autocomplePopup\"]/child::div/input")
+	WebElement fromInput;
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchToCity inactiveWidget \"]")
+	WebElement to;
+	
+	@FindBy(xpath="//div[@class=\"autoSuggestPlugin hsw_autocomplePopup makeFlex column spaceBetween\"]/child::div/input")
+	WebElement toInput;
+	
+	@FindBy(xpath="//div[@class='flt_fsw_inputBox flightTravllers inactiveWidget ']")
+	WebElement traveller;
+	
+	@FindBy(xpath="//li[@data-cy=\"adults-3\"]")
+	WebElement travellervalue;
+	
+	@FindBy(xpath="//button[@class=\"primaryBtn btnApply pushRight\"]")
+	WebElement apply;
+	
+	@FindBy(xpath="//a[text()=\"Search\"]")
+	WebElement Search;
+	
+	//........................................................................................................................
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchCity inactiveWidget \"]")
+	WebElement from1;
+	
+	@FindBy(xpath="//div[@class=\"autoSuggestPlugin hsw_autocomplePopup\"]/child::div/input")
+	WebElement fromInput1;
+	
+	@FindBy(xpath="//div[@class=\"flt_fsw_inputBox searchToCity inactiveWidget \"]")
+	WebElement to1;
+	
+	@FindBy(xpath="//div[@class=\"autoSuggestPlugin hsw_autocomplePopup makeFlex column spaceBetween\"]/child::div/input")
+	WebElement toInput1;
+
+	@FindBy(xpath="//div[@class=\"fltErrorSection makeFlex\"]")
+	WebElement errormsg;
+	
+	
+  //.....................................................................................................................
+	
+	@FindBy(xpath="//a[@href=\"https://www.makemytrip.com/homestays/\"]")
+	WebElement homestays_villas;
+	
+	@FindBy(xpath="//div[@class=\"hsw_inner\"]/child::div[@class=\"hsw_inputBox selectHtlCity\"]")
+	WebElement from3;
+
+	@FindBy(xpath="//div[@class=\"hw__searchInputWrapper\"]/child::input")
+	WebElement frominput3;
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_300\"]/label/input[@id=\"checkin\"]")
+	WebElement checkin3;
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_300\"]/label/input[@data-cy=\"checkin\"]")
+	WebElement checkout3;
+	
+	@FindBy (xpath="//button[@type=\"button\"]")
+    WebElement apply3;
+	
+	@FindBy (xpath="//p[text()=\"Showing Properties in Indore\"]")
+    WebElement result3;
+	
+	@FindBy(xpath="//div[@class=\"hsw vpsw hswNew\"]/child::p[@class=\"makeFlex vrtlCenter appendTop15\"]/child::button[@id=\"hsw_search_button\"]")
+	WebElement search3;
+	
+	
+	//.....................................................................................................................
+	
+	@FindBy(xpath="//a[@href=\"https://www.makemytrip.com/homestays/\"]")
+	WebElement homestays_villas1;
+	
+	@FindBy(xpath="//div[@class=\"hsw_inner\"]/child::div[@class=\"hsw_inputBox selectHtlCity\"]")
+	WebElement from4;
+
+	@FindBy(xpath="//div[@class=\"hw__searchInputWrapper\"]/child::input")
+	WebElement frominput4;
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_300\"]/label/input[@id=\"checkin\"]")
+	WebElement checkin4;
+	
+	
+	@FindBy(xpath="//div[@data-cy=\"HomeStaysSearchWidget_300\"]/label/input[@data-cy=\"checkin\"]")
+	WebElement checkout4;
+	
+	@FindBy (xpath="//button[@type=\"button\"]")
+    WebElement apply4;
+	
+	@FindBy (id="RECOMMENDED_HOTELS")
+    WebElement result4;
+	
+	@FindBy(xpath="//div[@class=\"hsw vpsw hswNew\"]/child::p[@class=\"makeFlex vrtlCenter appendTop15\"]/child::button[@id=\"hsw_search_button\"]")
+	WebElement search4;
+	
+	
+	@FindBy(xpath="//input[@placeholder=\"Search for locality / hotel name\"]")
+	WebElement nearbysearch4;
+
+	
+	@FindBy(xpath="//input[@placeholder=\"Search for locality / hotel name\"]")
+	WebElement nearbysearchvalue4;
+	
+	@FindBy(xpath="//div[@id=\"RECOMMENDED_HOTELS\"]")
+	WebElement searchresult4;
+	
+	
+//...........................................................................................................................
+	
+	@FindBy(xpath="//input[@placeholder=\"Search for locality / hotel name\"]")
+	WebElement nearbysearch5;
+
+	
+	@FindBy(xpath="//input[@placeholder=\"Search for locality / hotel name\"]")
+	WebElement nearbysearchvalue5;
+	
+	
+	@FindBy(xpath="//div[@id=\"react-autowhatever-1\"]")
+	WebElement error_message;
+	
+	
+//.......................................//Methods for Scenario1//...............................................................................	
+	
+	
+	
+	public Pagefactoryflight(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver,this);
+	}
+	 
+	
+	
+	public void ExplicitWait(WebElement webElement,int time){
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+			wait.until(ExpectedConditions.elementToBeClickable(webElement));
+	 }
+	
+	
+	public void ExplicitWait1(WebElement webElement,int time){
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+			wait.until(ExpectedConditions.visibilityOfAllElements(webElement));
+	 }
+	
+	
+	
+	
+	
+	
+	public void ClickFlights() throws InterruptedException {
+	 
+		Alert al=driver.switchTo().alert();
+		al.dismiss();
+	
+	}
+	public void Details(String from1 , String To) throws InterruptedException, AWTException {
+		
+		
+		ExplicitWait(from,2);
+		from.click();
+	
+		fromInput.sendKeys(from1);
+		Thread.sleep(3000);
+		   Robot r=new Robot();
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(3000);
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+		to.click();
+		Thread.sleep(3000);
+		toInput.sendKeys(To);
+		
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(5000);
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+	     
+	     	JavascriptExecutor js = (JavascriptExecutor)driver;
+	    	js.executeScript("window.scrollBy(0,200)");
+	    	
+	    	
+	       	WebElement selectDate = driver.findElement(By.xpath("//div[@class='DayPicker-Day' and @aria-label='Fri Apr 26 2024' and @tabindex='-1' and @role='gridcell']"));
+	    	ExplicitWait(selectDate,1);	
+
+	       	selectDate.click();
+	       		
+					
+	        	ExplicitWait(traveller,1);	
+	    		traveller.click();
+	    		
+	    		
+	    		ExplicitWait(travellervalue,1);	
+	    		travellervalue.click();
+	    		apply.click();
+	    		
+				}
+	public void SearchFlight() {
+		Search.click();
+	}
+	
+	//.......................................//Methods for Scenario2//...............................................................................	
+	
+	
+public void Details2(String from1 , String To) throws InterruptedException, AWTException {
+		
+	ExplicitWait(from,3);	
+		from.click();
+		ExplicitWait(fromInput,3);
+		fromInput.sendKeys(from1);
+		Thread.sleep(3000);
+		   Robot r=new Robot();
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(3000);
+
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+		to.click();
+		ExplicitWait(toInput,3);
+		toInput.sendKeys(To);
+		
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(5000);
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+	     
+	
+	}
+	public void errormsg() {
+		 String msg="From & To airports cannot be the same";
+		 Assert.assertTrue(errormsg.getText().contains(msg));
+
+	}
+	
+	
+	//.......................................//Methods for Scenario3//...............................................................................	
+	
+	
+public void Details3(String From) throws InterruptedException, AWTException {
+		
+		ExplicitWait(homestays_villas,3);
+		homestays_villas.click();
+		
+		ExplicitWait(from3,3);	
+		from3.click();
+		
+		
+		ExplicitWait(frominput3,3);	
+		frominput3.sendKeys(From);
+		
+		Thread.sleep(3000);
+		   Robot r=new Robot();
+	       r.keyPress(KeyEvent.VK_DOWN);
+	       Thread.sleep(3000);
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+		
+		checkin3.click();
+		
+		
+	  	JavascriptExecutor js = (JavascriptExecutor)driver;
+    	js.executeScript("window.scrollBy(0,200)");
+    	Thread.sleep(1000);
+    
+       	WebElement selectDate = driver.findElement(By.xpath("//div[@class=\"DayPicker-Day\" and text()=\"26\" and @tabindex=\"-1\" and @role=\"gridcell\" and @aria-label=\"Fri Apr 26 2024\"]"));
+       	selectDate.click();
+       	
+       	ExplicitWait(selectDate,1);
+
+       	WebElement checkout3= driver.findElement(By.xpath("//div[@class=\"DayPicker-Day\" and text()=\"3\"]"));
+       	checkout3.click();
+       	
+       	ExplicitWait(apply3,1);
+       	apply3.click();
+     
+    
+}
+    
+	
+		public void Search_stay3() throws InterruptedException {
+		 	
+			 
+			 search3.click();
+			                                                   }	
+
+		public void result3() throws InterruptedException {
+			
+			//Thread.sleep(1000);
+			ExplicitWait1(result3,2);
+			String msg="Showing Properties in Indore";
+			
+			
+			 Assert.assertTrue(result3.getText().contains(msg));
+		}                 
+
+	
+	
+		//.......................................//Methods for Scenario4//...............................................................................	
+	
+	
+
+	public void Search_stay4() throws InterruptedException {
+	 	
+		 
+		 search4.click();
+		}	
+	     
+	    
+	      
+	      
+	      public void search_nearby_loc() throws InterruptedException, AWTException {
+	    	  nearbysearch4.click();
+	    	  nearbysearch4.sendKeys("chaitanya");
+	    	  Thread.sleep(3000);
+			   Robot r=new Robot();
+		       r.keyPress(KeyEvent.VK_DOWN);
+		       Thread.sleep(3000);
+
+		       r.keyPress(KeyEvent.VK_ENTER);
+		       Thread.sleep(3000);
+		       
+			
+	      }
+	      
+	      public void resultshould_appear() throws InterruptedException {
+	    	 
+	    	  String msg="Chaityabhoomi, Mumbai";
+	    	  ExplicitWait1(searchresult4,3);
+	    	  
+	    	String actualmsg=searchresult4.getText();
+	 		 Assert.assertTrue(actualmsg.contains(msg));
+	 		 
+	      }
+	      
+	      
+//.......................................//Methods for Scenario5//...............................................................................	
+	
+	public void invalid_value() throws InterruptedException, AWTException {
+		nearbysearch5.click();
+		nearbysearch5.sendKeys("vvvvvvv");
+		 Thread.sleep(3000);
+		   Robot r=new Robot();
+	       r.keyPress(KeyEvent.VK_ENTER);
+	       Thread.sleep(3000);
+		
+	}
+	
+	public void error_message() throws InterruptedException {
+		
+		
+		String msg="It seems that the place you searched for is outside your destination city. "
+				+ "Please try again with different place or change your destination city";
+		
+		 ExplicitWait1(error_message,3);
+		 Assert.assertTrue(error_message.getText().contains(msg));
+	}
+	
+	
+	
+	
+	
+	
+}

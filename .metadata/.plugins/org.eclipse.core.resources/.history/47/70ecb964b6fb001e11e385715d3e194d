@@ -1,0 +1,29 @@
+package TestRunner;
+import org.junit.runner.RunWith;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+ 
+@RunWith(Cucumber.class)
+@CucumberOptions(features="src\\test\\resource\\Features\\MMT_Flight.feature",
+
+glue="StepDefinition",tags="@Scenario2",plugin= {"pretty", 
+		"html:target/HTMLReports/ShikshaReport.html",	
+		"json:target/JSONReports/ShikshaReport.json",
+		"junit:target/JUNITReports/ShikshaReport.xml",
+"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+})
+
+public class Runner extends AbstractTestNGCucumberTests{
+	
+	
+
+}
+
+
+
+
+
+
+ 
